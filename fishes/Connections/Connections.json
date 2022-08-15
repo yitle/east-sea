@@ -1,0 +1,30 @@
+{
+  "81a0e516-b49a-4119-bfa1-2e3cb9a5ad10": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1588/1.0.1588.2938/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://ykmyy.sharepoint.com/sites/Account": {
+        "dataSources": {
+          "Directory of vege": {
+            "tableName": "e84a60f4-33b3-4d10-b5fb-f1621001cb90"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Directory of vege"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "81a0e516-b49a-4119-bfa1-2e3cb9a5ad10"
+  }
+}

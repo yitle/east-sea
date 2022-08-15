@@ -1,0 +1,111 @@
+"'To upload excel' As screen":
+
+    Button2 As button:
+        Height: =70
+        OnSelect: |-
+            =UpdateContext({Exceluploading:true});SubmitForm(Form1)
+        Size: =24
+        Text: ="Upload excel"
+        Width: =280
+        X: =348
+        Y: =975
+        ZIndex: =1
+
+    Form1 As form:
+        DataSource: ='Directory of vege'
+        Height: =270
+        OnSuccess: |-
+            =ClearCollect(col_flowExcelData,GetExcelData.Run(Value(Form1.LastSubmit.ID)));ResetForm(Form1);UpdateContext({Exceluploading:false});
+        Width: =640
+        Y: =40
+        ZIndex: =2
+
+        Attachments_DataCard2 As typedDataCard.attachmentsEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="{Attachments}"
+            Default: =ThisItem.Attachments
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Directory of vege'],DataSourceInfo.DisplayName,"{Attachments}")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =243
+            Required: =false
+            Update: =DataCardValue14.Attachments
+            Width: =640
+            X: =0
+            Y: =0
+            ZIndex: =3
+
+            DataCardKey14 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue14 As attachments:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DisplayMode: =Parent.DisplayMode
+                Height: =184
+                IsInDataCard: =true
+                Items: =Parent.Default
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                Size: =21
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey14.Y + DataCardKey14.Height + 5
+                ZIndex: =2
+
+            ErrorMessage10 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue14.Y + DataCardValue14.Height
+                ZIndex: =3
+
+            StarVisible10 As label:
+                Align: =Align.Center
+                Height: =DataCardKey14.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey14.Y
+                ZIndex: =4
+
+    Label2 As label:
+        Height: =151
+        Size: =21
+        Text: |-
+            ="ClearCollect(col_flowExcelData,GetExcelData.run(Value(Form1.LastSubmit.Id)));ResetForm(Form1);UpdateContext({Exceluploading:false});"
+        Width: =492
+        X: =33
+        Y: =639
+        ZIndex: =4
+
+    Label3 As label:
+        Height: =70
+        Size: =21
+        Text: =
+        Width: =560
+        X: =33
+        Y: =533
+        ZIndex: =5
+
